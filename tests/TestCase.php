@@ -1,37 +1,22 @@
 <?php
 
-namespace VendorName\Skeleton\Tests;
+namespace HumanReadable\HumanRules\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use HumanReadable\HumanRules\HumanRulesServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use VendorName\Skeleton\SkeletonServiceProvider;
 
 class TestCase extends Orchestra
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'VendorName\\Skeleton\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
-    }
-
     protected function getPackageProviders($app)
     {
         return [
-            SkeletonServiceProvider::class,
+            HumanRulesServiceProvider::class,
         ];
     }
 
     public function getEnvironmentSetUp($app)
     {
-        config()->set('database.default', 'testing');
-
-        /*
-         foreach (\Illuminate\Support\Facades\File::allFiles(__DIR__ . '/database/migrations') as $migration) {
-            (include $migration->getRealPath())->up();
-         }
-         */
+        config()->set('app.locale', 'es'); // o 'en', si quieres por defecto
+        config()->set('human-rules.default_locale', 'es');
     }
 }
