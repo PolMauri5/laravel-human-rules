@@ -9,7 +9,7 @@
         "laravel-package",
         "translations"
     ],
-    "homepage": "https://github.com/PolMauri5/human-readable-validation-rules",
+    "homepage": "https://github.com/PolMauri5/laravel-human-rules",
     "license": "MIT",
     "authors": [
         {
@@ -56,5 +56,6 @@
             ]
         }
     },
-    "prefer-stable": true
+    "prefer-stable": true,
+    "minimum-stability": "stable"
 }
