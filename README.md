@@ -1,31 +1,31 @@
 # Human Rules
 
-Human Rules es un paquete de Laravel que traduce reglas de validación en frases legibles para humanos.  
-Actualmente soporta **inglés (en)** y **español (es)**, y puede extenderse fácilmente con más idiomas y reglas personalizadas.
+Human Rules is a Laravel package that translates validation rules into human-readable sentences.  
+It currently supports **English (en)** and **Spanish (es)**, and can easily be extended with more languages and custom rules.
 
 ---
 
-## Instalación
+## Installation
 
-Instalar mediante Composer:
+Install via Composer:
 
 ```bash
 composer require polmauri/human-rules
 ```
 
-Laravel detectará automáticamente el Service Provider gracias al `extra.laravel.providers` en `composer.json`.
+Laravel will automatically register the Service Provider thanks to the `extra.laravel.providers` entry in `composer.json`.
 
 ---
 
-## Configuración
+## Configuration
 
-Puedes publicar el archivo de configuración con:
+You can publish the configuration file with:
 
 ```bash
 php artisan vendor:publish --tag=human-rules-config
 ```
 
-También puedes publicar las traducciones para modificarlas según tus necesidades:
+You can also publish the translations to customize them:
 
 ```bash
 php artisan vendor:publish --tag=human-rules-translations
@@ -33,9 +33,9 @@ php artisan vendor:publish --tag=human-rules-translations
 
 ---
 
-## Uso
+## Usage
 
-Ejemplo de uso básico:
+Basic usage example:
 
 ```php
 use HumanReadable\HumanRules\RuleTranslator;
@@ -46,32 +46,32 @@ $rules = [
 ];
 
 $customNames = [
-    'email' => 'correo electrónico',
-    'password' => 'contraseña',
+    'email' => 'email address',
+    'password' => 'password',
 ];
 
 $result = RuleTranslator::translate($rules, $customNames);
 
-// Resultado en español:
+// Result in Spanish (locale = es):
 [
-    "email" => "El campo correo electrónico es obligatorio y debe ser un correo electrónico válido y debe tener al menos 5 caracteres",
-    "password" => "El campo contraseña es obligatorio y debe tener al menos 8 caracteres"
+    "email" => "El campo email address es obligatorio y debe ser un correo electrónico válido y debe tener al menos 5 caracteres",
+    "password" => "El campo password es obligatorio y debe tener al menos 8 caracteres"
 ]
 ```
 
 ---
 
-## Multi-idioma
+## Multi-language
 
-El paquete incluye traducciones por defecto en inglés y español.
+The package includes default translations in English and Spanish.
 
-Para cambiar el idioma globalmente:
+To change the global locale:
 
 ```php
 app()->setLocale('en');
 ```
 
-O de manera puntual en la llamada:
+Or override it per call:
 
 ```php
 RuleTranslator::translate($rules, $customNames, 'es');
@@ -79,9 +79,9 @@ RuleTranslator::translate($rules, $customNames, 'es');
 
 ---
 
-## Extensión con nuevas reglas
+## Extending with new rules
 
-Puedes añadir reglas creando clases en el namespace `HumanReadable\HumanRules\Rules` que implementen la interfaz:
+You can add rules by creating classes in the `HumanReadable\HumanRules\Rules` namespace that implement the interface:
 
 ```php
 namespace HumanReadable\HumanRules\Contracts;
@@ -94,7 +94,7 @@ interface TranslatableRule
 }
 ```
 
-Ejemplo simplificado de una regla personalizada:
+Simplified example of a custom rule:
 
 ```php
 namespace HumanReadable\HumanRules\Rules;
@@ -120,8 +120,8 @@ class MaxRule implements TranslatableRule
 
 ## Tests
 
-El paquete incluye pruebas con [Pest](https://pestphp.com/).  
-Puedes ejecutarlas con:
+The package includes tests with [Pest](https://pestphp.com/).  
+You can run them with:
 
 ```bash
 composer test
@@ -129,9 +129,9 @@ composer test
 
 ---
 
-## Estilo de código
+## Code style
 
-El paquete usa [Laravel Pint](https://laravel.com/docs/pint) para mantener un estilo de código consistente.
+The package uses [Laravel Pint](https://laravel.com/docs/pint) to maintain a consistent code style.
 
 ```bash
 composer format
@@ -139,7 +139,7 @@ composer format
 
 ---
 
-## Licencia
+## License
 
-Este paquete se distribuye bajo la licencia MIT.  
-Consulta el archivo [LICENSE.md](LICENSE.md) para más detalles.
+This package is distributed under the MIT License.  
+See the [LICENSE.md](LICENSE.md) file for more details.
